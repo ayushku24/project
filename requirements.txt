@@ -1,0 +1,6 @@
+flask
+pymongo
+selenium
+webdriver-manager
+requests
+gunicorn

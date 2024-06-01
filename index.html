@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Twitter Trending Topics</title>
+    <script>
+        function runScript() {
+            fetch('/run_script')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('results').innerHTML = `
+                        These are the most happening topics as on ${new Date(data.end_time * 1000).toLocaleString()}:
+                        <ul>
+                            <li>${data.trend1}</li>
+                            <li>${data.trend2}</li>
+                            <li>${data.trend3}</li>
+                            <li>${data.trend4}</li>
+                            <li>${data.trend5}</li>
+                        </ul>
+                        The IP address used for this query was ${data.ip_address}.
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                });
+        }
+    </script>
+</head>
+<body>
+    <a href="javascript:void(0);" onclick="runScript()">Click here to run the script.</a>
+    <div id="results"></div>
+</body>
+</html>
