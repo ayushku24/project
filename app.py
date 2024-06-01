@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify
 import subprocess
 import pymongo
 import os
@@ -10,10 +10,6 @@ mongo_uri = os.getenv('MONGODB_URI', 'mongodb://localhost:27017/')
 client = pymongo.MongoClient(mongo_uri)
 db = client["twitter_trending"]
 collection = db["trends"]
-
-@app.route('/')
-def home():
-    return render_template('index.html')
 
 @app.route('/run_script')
 def run_script():
